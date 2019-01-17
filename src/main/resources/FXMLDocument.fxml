@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.apu.graphicseditor.FXMLDocumentController">
+   <children>
+      <VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="800.0">
+               <children>
+                  <Button id="cursorButton" fx:id="cursorButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="50.0">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="Direct-selection-tool-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="15.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip opacity="0.5" text="Select" />
+                     </tooltip>
+                  </Button>
+                  <Button id="openButton" fx:id="openButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="50.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="15.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="Open-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip opacity="0.7" text="Open" />
+                     </tooltip>
+                  </Button>
+                  <Button id="saveButton" fx:id="saveButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="50.0">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="15.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="Save-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip opacity="0.7" text="Save" />
+                     </tooltip>
+                  </Button>
+                  <Separator maxWidth="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0" />
+                  <Button id="selectButton" fx:id="selectButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="50.0">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="Rectangular-marquee-tool-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="15.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip opacity="0.7" text="Select area" />
+                     </tooltip>
+                  </Button>
+                  <Button id="eraseButton" fx:id="eraseButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="50.0">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="Rotate-view-tool-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="15.0" />
+                     </HBox.margin>
+                     <tooltip>
+                        <Tooltip opacity="0.7" text="Erase" />
+                     </tooltip>
+                  </Button>
+                  <Separator maxWidth="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0" />
+                  <HBox minHeight="-Infinity" prefHeight="42.0" prefWidth="300.0">
+                     <children>
+                        <Button id="fillButton" fx:id="fillButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="50.0">
+                           <graphic>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="3d-material-drop-tool-icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="5.0" right="5.0" top="15.0" />
+                           </HBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Fill shape" />
+                           </tooltip>
+                        </Button>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="132.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="40.0" text="Border">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" top="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ColorPicker fx:id="borderColorPicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleColorPicker" prefHeight="25.0" prefWidth="100.0" promptText="Border">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" right="5.0" top="5.0" />
+                                       </HBox.margin>
+                                    </ColorPicker>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="40.0" text="Fill">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" left="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ColorPicker fx:id="fillColorPicker" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#handleColorPicker" prefHeight="25.0" prefWidth="100.0" promptText="Border">
+                                       <HBox.margin>
+                                          <Insets bottom="5.0" right="5.0" />
+                                       </HBox.margin>
+                                    </ColorPicker>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Separator maxWidth="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button id="upButton" fx:id="groupButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="Group-tool-icon_sm.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="2.5" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Group" />
+                           </tooltip>
+                        </Button>
+                        <Button id="downButton" fx:id="ungroupButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="Ungroup-tool-icon_sm.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="2.5" left="5.0" right="5.0" top="2.5" />
+                           </VBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Ungroup" />
+                           </tooltip>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <Separator maxWidth="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button id="upButton" fx:id="upButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="data-upload-icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="2.5" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Move up" />
+                           </tooltip>
+                        </Button>
+                        <Button id="downButton" fx:id="downButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="data-download-icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="2.5" left="5.0" right="5.0" top="2.5" />
+                           </VBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Move down" />
+                           </tooltip>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <Separator maxWidth="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0" />
+                  <VBox prefHeight="100.0" prefWidth="350.0">
+                     <children>
+                        <HBox minHeight="-Infinity" prefHeight="42.0" prefWidth="300.0">
+                           <children>
+                              <Button id="lineButton" fx:id="lineButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <HBox.margin>
+                                    <Insets bottom="2.5" left="2.5" right="2.5" top="5.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Line-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button id="squareButton" fx:id="squareButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <HBox.margin>
+                                    <Insets bottom="2.5" left="2.5" right="2.5" top="5.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Square-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button id="triangleButton" fx:id="triangleButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <HBox.margin>
+                                    <Insets bottom="2.5" left="2.5" right="2.5" top="5.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Triangle-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button id="polygonButton" fx:id="polygonButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Polygon-tool-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets bottom="2.5" left="2.5" right="2.5" top="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button id="circleButton" fx:id="circleButton" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Circle-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets bottom="2.5" left="2.5" right="2.5" top="5.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="83.0" prefWidth="125.0">
+                           <children>
+                              <Button id="pentagonButton" fx:id="pentagonButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="2.5" right="2.5" top="2.5" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Pentagon-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button id="rectangleButton" fx:id="rectangleButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="2.5" right="2.5" top="2.5" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Rectangle-tool-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button id="rhombusButton" fx:id="rhombusButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="2.5" right="2.5" top="2.5" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Rhombus-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button id="octagonButton" fx:id="octagonButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Octagon-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="2.5" right="2.5" top="2.5" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button id="ellipseButton" fx:id="ellipseButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="Ellipse-tool-icon.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" left="2.5" right="2.5" top="2.5" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator maxHeight="-Infinity" minHeight="-Infinity" prefHeight="1.0" prefWidth="200.0" />
+            <Pane prefHeight="480.0" prefWidth="800.0" scaleShape="false">
+               <children>
+                  <Canvas id="mainCanvas" fx:id="mainCanvas" height="480.0" onMouseDragged="#handleMouseAction" onMousePressed="#handleMouseAction" onMouseReleased="#handleMouseAction" width="800.0" />
+               </children>
+            </Pane>
+            <Separator maxHeight="-Infinity" minHeight="-Infinity" prefHeight="1.0" prefWidth="800.0" />
+            <Pane prefHeight="30.0" prefWidth="800.0" scaleShape="false">
+               <children>
+                  <Label id="label" fx:id="label" layoutX="58.0" layoutY="2.0" prefHeight="25.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
