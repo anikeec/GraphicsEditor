@@ -15,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.apu.graphicseditor.FXMLDocumentController">
+<AnchorPane onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" prefHeight="600.0" prefWidth="850.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.apu.graphicseditor.FXMLDocumentController">
    <children>
-      <VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" prefHeight="600.0" prefWidth="800.0">
+      <VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" prefHeight="600.0" prefWidth="850.0">
          <children>
-            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="800.0">
+            <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="850.0">
                <children>
                   <Button id="cursorButton" fx:id="cursorButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="50.0">
                      <graphic>
@@ -348,11 +348,11 @@
                                     <Insets bottom="5.0" left="2.5" right="2.5" top="2.5" />
                                  </HBox.margin>
                               </Button>
-                              <Button id="ellipseButton" fx:id="ellipseButton" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                              <Button id="imageButton" fx:id="imageButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="Ellipse-tool-icon.png" />
+                                          <Image url="image-icon.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -362,6 +362,41 @@
                               </Button>
                            </children>
                         </HBox>
+                     </children>
+                  </VBox>
+                  <Separator maxWidth="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0" prefWidth="1.0" />
+				  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button id="buttonFirstResearch" fx:id="buttonFirstResearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="blue-icon-lab1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="2.5" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Group" />
+                           </tooltip>
+                        </Button>
+                        <Button id="buttonSecondResearch" fx:id="buttonSecondResearch" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="blue-icon-lab2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="2.5" left="5.0" right="5.0" top="2.5" />
+                           </VBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Ungroup" />
+                           </tooltip>
+                        </Button>
                      </children>
                   </VBox>
                </children>
