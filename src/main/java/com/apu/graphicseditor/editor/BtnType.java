@@ -30,5 +30,7 @@ public enum BtnType {
     ELLIPSE,
     PENTAGON,
     OCTAGON,
-    IMAGE
+    IMAGE,
+    FIRST_RESEARCH,
+    SECOND_RESEARCH
 }

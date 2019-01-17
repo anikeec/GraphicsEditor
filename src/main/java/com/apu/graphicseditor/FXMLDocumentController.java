@@ -103,6 +103,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label label;
     
+    @FXML
+    private Button buttonFirstResearch;
+    
+    @FXML
+    private Button buttonSecondResearch;
+    
     private InAdapterInterface adapter;
 
     public GraphicsContext getGraphicsContext() {
@@ -141,6 +147,10 @@ public class FXMLDocumentController implements Initializable {
             adapter.onClickButton(BtnType.SAVE);
         } else if(button == openButton) {
             adapter.onClickButton(BtnType.OPEN);
+        } else if(button == buttonFirstResearch) {
+            adapter.onClickButton(BtnType.FIRST_RESEARCH);
+        } else if(button == buttonSecondResearch) {
+            adapter.onClickButton(BtnType.SECOND_RESEARCH);
         }
     }
     

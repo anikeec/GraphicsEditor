@@ -5,6 +5,7 @@
  */
 package com.apu.graphicseditor.editor;
 
+import com.apu.graphicseditor.shapes.ImageShape;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +21,10 @@ public class EditorModel {
     private static EditorModel model;
     
     @Getter @Setter
-    Stage stage;
+    private Stage stage;
+    
+    @Getter @Setter
+    private ImageShape imageShape;
     
     public static EditorModel getInstance() {
         if(model == null)

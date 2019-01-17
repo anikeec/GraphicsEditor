@@ -51,6 +51,12 @@ public class StateSelect extends StateBase{
             case DOWN:
                         stateEngine.graphicsEditor.getCurrentSheet().moveBackwardSelected();
                         break;
+            case FIRST_RESEARCH:
+                        stateEngine.graphicsEditor.getCurrentSheet().runFirstResearch();
+                        break;
+            case SECOND_RESEARCH:
+                        stateEngine.graphicsEditor.getCurrentSheet().runSecondResearch();
+                        break;
             default:
                         stateEngine.graphicsEditor.getCurrentSheet().unselectAllFigures();
                         onGuiPressButtonBase(button);
