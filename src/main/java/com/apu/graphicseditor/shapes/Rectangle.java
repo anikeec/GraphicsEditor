@@ -12,6 +12,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -22,8 +24,12 @@ import javax.xml.bind.annotation.XmlType;
                                  "lineWidth","groupId","filled","A","C"})
 @XmlRootElement(name = "Rectangle")
 public class Rectangle extends Shape {
+    
+    @Getter @Setter
     @XmlElement(name = "A", required = true)
     Point A;
+    
+    @Getter @Setter
     @XmlElement(name = "C", required = true)
     Point C;
 
@@ -40,22 +46,6 @@ public class Rectangle extends Shape {
         this.A = A;
         this.C = C;
     }
-
-    public Point getA() {
-        return A;
-    }
-
-    public void setA(Point A) {
-        this.A = A;
-    }
-
-    public Point getC() {
-        return C;
-    }
-
-    public void setC(Point C) {
-        this.C = C;
-    } 
     
     @Override
     Point getMinPoint() {

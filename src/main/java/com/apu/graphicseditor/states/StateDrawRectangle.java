@@ -42,7 +42,7 @@ public class StateDrawRectangle extends StateBase{
     public void onMouseReleasePrymary(Point point) {
         Shape shape = stateEngine.graphicsEditor.getCurrentSheet().getTempShape();
         if(shape == null)   return;
-        stateEngine.graphicsEditor.getCurrentSheet().add(shape);
+        stateEngine.graphicsEditor.getCurrentSheet().addShape(shape);
         stateEngine.graphicsEditor.getCurrentSheet().setTempShape(null);
     }    
 

@@ -7,17 +7,18 @@ package com.apu.graphicseditor.shapes;
 import com.apu.graphicseditor.OutputInterface;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author al
  */
+@NoArgsConstructor
 public class Composite{
-    List<Shape> shapes;
-
-    public Composite() {
-        shapes = new ArrayList<>();
-    }  
+    
+    @Getter
+    List<Shape> shapes = new ArrayList<>();;
     
     public void draw(OutputInterface output) {
        for(Shape s: shapes){
@@ -25,12 +26,8 @@ public class Composite{
            s.draw(output);
        }
     }
-    public void add(Shape s){
+    public void addShape(Shape s){
         shapes.add(s);
     }
-
-    public List<Shape> getShapes() {
-        return shapes;
-    }    
     
 }

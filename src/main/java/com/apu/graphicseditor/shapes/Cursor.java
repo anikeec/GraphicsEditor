@@ -37,7 +37,7 @@ public class Cursor extends Point{
         return instance;
     }
 
-    public static Point getCursorPoint() {
+    public Point getCursorPoint() {
         return cursorPoint;
     }
 
