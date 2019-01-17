@@ -43,6 +43,9 @@ public abstract class StateBase implements State{
             case CIRCLE:  
                         stateEngine.setState(stateEngine.stateDrawCircle);
                         break;
+            case IMAGE:
+                        stateEngine.setState(stateEngine.stateInsertImage);
+                        break;
             case SQUARE:
             case TRIANGLE:
             case POLYGON:

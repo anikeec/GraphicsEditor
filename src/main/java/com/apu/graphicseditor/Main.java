@@ -5,6 +5,7 @@
  */
 package com.apu.graphicseditor;
 
+import com.apu.graphicseditor.editor.EditorModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +23,8 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXMLDocument.fxml"));
         Parent root = loader.load();
+        EditorModel model = EditorModel.getInstance();
+        model.setStage(stage);
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("paint-icon.png"));
         stage.setScene(scene);

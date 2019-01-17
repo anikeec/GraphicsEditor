@@ -24,6 +24,7 @@ public class StateEngine implements InputInterface{
     State stateDrawCircle;
     State stateDrawLine;
     State stateDrawRectangle;    
+    State stateInsertImage;
     State stateFill;
     State stateRemove;
     private State state;
@@ -36,6 +37,7 @@ public class StateEngine implements InputInterface{
         stateDrawCircle = new StateDrawCircle(this);
         stateDrawLine = new StateDrawLine(this);
         stateDrawRectangle = new StateDrawRectangle(this);
+        stateInsertImage = new StateInsertImage(this);
         stateFill = new StateFill(this); 
         stateRemove = new StateRemove(this); 
         state = stateSelect;

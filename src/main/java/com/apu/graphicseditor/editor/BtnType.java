@@ -29,5 +29,6 @@ public enum BtnType {
     CIRCLE,
     ELLIPSE,
     PENTAGON,
-    OCTAGON    
+    OCTAGON,
+    IMAGE
 }

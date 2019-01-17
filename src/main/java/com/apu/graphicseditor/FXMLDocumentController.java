@@ -95,7 +95,7 @@ public class FXMLDocumentController implements Initializable {
     private Button octagonButton;
 
     @FXML
-    private Button ellipseButton;
+    private Button imageButton;
 
     @FXML
     private Canvas mainCanvas;
@@ -135,6 +135,8 @@ public class FXMLDocumentController implements Initializable {
             adapter.onClickButton(BtnType.LINE);
         } else if(button == rectangleButton) {
             adapter.onClickButton(BtnType.RECTANGLE);
+        } else if(button == imageButton) {
+            adapter.onClickButton(BtnType.IMAGE);
         } else if(button == saveButton) {
             adapter.onClickButton(BtnType.SAVE);
         } else if(button == openButton) {

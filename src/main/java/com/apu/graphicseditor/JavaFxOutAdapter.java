@@ -9,6 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import com.apu.graphicseditor.shapes.ColorRGB;
 import com.apu.graphicseditor.shapes.Point;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -69,6 +70,11 @@ public class JavaFxOutAdapter implements OutputInterface{
                         A.getY() - radius, 
                         2 * radius, 
                         2 * radius);
+    }
+
+    @Override
+    public void drawImage(Image image, double x, double y, double width, double height) {
+        gc.drawImage(image, x, y, width, height);
     }
     
 }
