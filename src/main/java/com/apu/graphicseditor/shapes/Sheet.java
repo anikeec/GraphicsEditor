@@ -76,8 +76,8 @@ public class Sheet {
         this.tempShape = tempShape;
     } 
     
-    public void add(Shape s){
-        figures.add(s);
+    public void addShape(Shape s){
+        figures.addShape(s);
     }
     
     public void draw(OutputInterface output) {
@@ -220,15 +220,15 @@ public class Sheet {
                     jc = JAXBContext.newInstance(Rectangle.class);
                     unmarshaller = jc.createUnmarshaller();
                     Rectangle fig = (Rectangle) unmarshaller.unmarshal(srd);
-                    figures.add(fig);
+                    figures.addShape(fig);
                 } else if(substr.contains("Circle")) {
                     jc = JAXBContext.newInstance(Circle.class);
                     unmarshaller = jc.createUnmarshaller();
-                    figures.add((Circle) unmarshaller.unmarshal(srd));
+                    figures.addShape((Circle) unmarshaller.unmarshal(srd));
                 } else if(substr.contains("Line")) {
                     jc = JAXBContext.newInstance(Line.class);
                     unmarshaller = jc.createUnmarshaller();
-                    figures.add((Line) unmarshaller.unmarshal(srd));
+                    figures.addShape((Line) unmarshaller.unmarshal(srd));
                 }
                 
                 if(ifinish == -1) break;      
