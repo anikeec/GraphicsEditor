@@ -63,6 +63,12 @@ public class StateSelect extends StateBase{
             case DILATE:
                         stateEngine.graphicsEditor.applyDilateFilter();
                         break;
+            case BLACK_WHITE:
+                        stateEngine.graphicsEditor.applyBlackWhiteFilter();
+                        break;
+            case COLOR:
+                        stateEngine.graphicsEditor.applyColorFilter();
+                        break;
             default:
                         stateEngine.graphicsEditor.getCurrentSheet().unselectAllFigures();
                         onGuiPressButtonBase(button);

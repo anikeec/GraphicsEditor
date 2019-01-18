@@ -34,5 +34,7 @@ public enum BtnType {
     FIRST_RESEARCH,
     SECOND_RESEARCH,
     ERODE,
-    DILATE
+    DILATE,
+    BLACK_WHITE,
+    COLOR
 }

@@ -45,7 +45,7 @@ public class ImageScanner {
         return dest;
     }
     
-    private static Pixel8 getPixel8(PixelReader reader, int xBase, int yBase) {
+    public static Pixel8 getPixel8(PixelReader reader, int xBase, int yBase) {
         Pixel[] neighbor = new Pixel[Pixel8.PIXELS_AMOUNT];
         
         int x = xBase - 1;

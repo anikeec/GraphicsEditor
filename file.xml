@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Rectangle>
+    <x>0.0</x>
+    <y>0.0</y>
+    <color>
+        <red>0.0</red>
+        <green>0.0</green>
+        <blue>1.0</blue>
+        <opacity>1.0</opacity>
+    </color>
+    <fill>
+        <red>0.9411764740943909</red>
+        <green>0.9725490212440491</green>
+        <blue>1.0</blue>
+        <opacity>1.0</opacity>
+    </fill>
+    <lineWidth>1</lineWidth>
+    <groupId>0</groupId>
+    <filled>false</filled>
+    <A>
+        <x>178.0</x>
+        <y>91.0</y>
+    </A>
+    <C>
+        <x>178.0</x>
+        <y>91.0</y>
+    </C>
+</Rectangle>

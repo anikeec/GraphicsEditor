@@ -11,9 +11,11 @@ import com.apu.graphicseditor.research.connectivity.BlackWhiteImageFilter;
 import com.apu.graphicseditor.research.connectivity.DilateImageFilter;
 import com.apu.graphicseditor.research.connectivity.ErodeImageFilter;
 import com.apu.graphicseditor.research.connectivity.ImageScanner;
+import com.apu.graphicseditor.research.connectivity.TwoPass;
 import com.apu.graphicseditor.research.convolution.Filter;
 import com.apu.graphicseditor.research.convolution.Matrix;
 import com.apu.graphicseditor.research.convolution.Tools;
+import com.apu.graphicseditor.research.lab2.UpdateImage;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.paint.Color;
@@ -128,7 +130,10 @@ public class GraphicsEditor {
 //            Matrix[] imageMatrix = Tools.getImageMatrix(imageShape.getImage());
 //            Matrix[] image3 = Tools.applyFilter(imageMatrix, Filter.highPassConvolutionFilter());
 //            Image resultImage =  Tools.matrixToImage(image3);
-            Image resultImage = ImageScanner.scan(imageShape.getImage(), new ErodeImageFilter());
+
+//            Image resultImage = new UpdateImage(imageShape.getImage()).update();
+              Image resultImage = new TwoPass().update(imageShape.getImage());
+//            Image resultImage = ImageScanner.scan(imageShape.getImage(), new ErodeImageFilter());
             imageShape.setImage(resultImage);
         }
     }   
@@ -160,5 +165,35 @@ public class GraphicsEditor {
             imageShape.setImage(resultImage);
         }
     }
+    
+    public void applyBlackWhiteFilter() {
+        List<Shape> shapeList = getCurrentSheet().getFigures().getShapes();
+        ImageShape imageShape = null;
+        for(Shape sh:shapeList) {
+            if(sh instanceof ImageShape) {
+                imageShape = (ImageShape)sh;
+            }
+        }
+        if(imageShape != null) {
+            Image resultImage = ImageScanner.scan(imageShape.getImage(), new BlackWhiteImageFilter());
+            imageShape.setImage(resultImage);
+        }
+    }
+    
+    public void applyColorFilter() {
+        List<Shape> shapeList = getCurrentSheet().getFigures().getShapes();
+        ImageShape imageShape = null;
+        for(Shape sh:shapeList) {
+            if(sh instanceof ImageShape) {
+                imageShape = (ImageShape)sh;
+            }
+        }
+        if(imageShape != null) {
+            Matrix[] imageMatrix = Tools.getImageMatrix(imageShape.getImage());
+            Matrix[] image3 = Tools.applyFilter(imageMatrix, Filter.negativeFilter());
+            Image resultImage =  Tools.matrixToImage(image3);
+            imageShape.setImage(resultImage);
+        }
+    } 
    
 }

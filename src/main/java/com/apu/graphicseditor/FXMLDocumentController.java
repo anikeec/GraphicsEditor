@@ -115,6 +115,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button buttonDilate;
     
+    @FXML
+    private Button buttonBlackWhite;
+    
+    @FXML
+    private Button buttonColor;
+    
     private InAdapterInterface adapter;
 
     public GraphicsContext getGraphicsContext() {
@@ -161,6 +167,10 @@ public class FXMLDocumentController implements Initializable {
             adapter.onClickButton(BtnType.ERODE);
         } else if(button == buttonDilate) {
             adapter.onClickButton(BtnType.DILATE);
+        } else if(button == buttonBlackWhite) {
+            adapter.onClickButton(BtnType.BLACK_WHITE);
+        } else if(button == buttonColor) {
+            adapter.onClickButton(BtnType.COLOR);
         }
     }
     
