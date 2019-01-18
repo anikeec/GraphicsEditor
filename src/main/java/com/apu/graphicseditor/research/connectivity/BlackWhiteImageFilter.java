@@ -9,7 +9,7 @@ package com.apu.graphicseditor.research.connectivity;
  *
  * @author apu
  */
-public class ErodeImageFilter implements ImageFilter {
+public class BlackWhiteImageFilter implements ImageFilter {
 
     @Override
     public Pixel handlePixel8(Pixel8 pixel) {
