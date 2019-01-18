@@ -32,5 +32,7 @@ public enum BtnType {
     OCTAGON,
     IMAGE,
     FIRST_RESEARCH,
-    SECOND_RESEARCH
+    SECOND_RESEARCH,
+    ERODE,
+    DILATE
 }

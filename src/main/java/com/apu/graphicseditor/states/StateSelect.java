@@ -57,6 +57,12 @@ public class StateSelect extends StateBase{
             case SECOND_RESEARCH:
                         stateEngine.graphicsEditor.runSecondResearch();
                         break;
+            case ERODE:
+                        stateEngine.graphicsEditor.applyErodeFilter();
+                        break;
+            case DILATE:
+                        stateEngine.graphicsEditor.applyDilateFilter();
+                        break;
             default:
                         stateEngine.graphicsEditor.getCurrentSheet().unselectAllFigures();
                         onGuiPressButtonBase(button);

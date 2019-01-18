@@ -109,6 +109,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button buttonSecondResearch;
     
+    @FXML
+    private Button buttonErode;
+    
+    @FXML
+    private Button buttonDilate;
+    
     private InAdapterInterface adapter;
 
     public GraphicsContext getGraphicsContext() {
@@ -151,6 +157,10 @@ public class FXMLDocumentController implements Initializable {
             adapter.onClickButton(BtnType.FIRST_RESEARCH);
         } else if(button == buttonSecondResearch) {
             adapter.onClickButton(BtnType.SECOND_RESEARCH);
+        } else if(button == buttonErode) {
+            adapter.onClickButton(BtnType.ERODE);
+        } else if(button == buttonDilate) {
+            adapter.onClickButton(BtnType.DILATE);
         }
     }
     

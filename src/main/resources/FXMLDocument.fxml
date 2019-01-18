@@ -17,7 +17,7 @@
 
 <AnchorPane onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.apu.graphicseditor.FXMLDocumentController">
    <children>
-      <VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" prefHeight="600.0" prefWidth="850.0">
+      <VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPress" onKeyReleased="#handleKeyRelease" prefHeight="600.0" prefWidth="900.0">
          <children>
             <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="850.0">
                <children>
@@ -395,6 +395,40 @@
                            </VBox.margin>
                            <tooltip>
                               <Tooltip opacity="0.7" text="Ungroup" />
+                           </tooltip>
+                        </Button>
+                     </children>
+                  </VBox>
+				  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button id="buttonErode" fx:id="buttonErode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView accessibleRole="BUTTON" accessibleText="Erode" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="blue-icon-e.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="2.5" left="5.0" right="5.0" top="5.0" />
+                           </VBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Erode" />
+                           </tooltip>
+                        </Button>
+                        <Button id="buttonDilate" fx:id="buttonDilate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="32.0">
+                           <graphic>
+                              <ImageView accessibleText="Dilate" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="blue-icon-d.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="2.5" left="5.0" right="5.0" top="2.5" />
+                           </VBox.margin>
+                           <tooltip>
+                              <Tooltip opacity="0.7" text="Dilate" />
                            </tooltip>
                         </Button>
                      </children>

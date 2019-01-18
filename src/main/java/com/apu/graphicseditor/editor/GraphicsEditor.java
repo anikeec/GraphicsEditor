@@ -8,6 +8,8 @@ package com.apu.graphicseditor.editor;
 import com.apu.graphicseditor.JavaFxOutAdapter;
 import com.apu.graphicseditor.OutputInterface;
 import com.apu.graphicseditor.research.connectivity.BlackWhiteImageFilter;
+import com.apu.graphicseditor.research.connectivity.DilateImageFilter;
+import com.apu.graphicseditor.research.connectivity.ErodeImageFilter;
 import com.apu.graphicseditor.research.connectivity.ImageScanner;
 import com.apu.graphicseditor.research.convolution.Filter;
 import com.apu.graphicseditor.research.convolution.Matrix;
@@ -126,9 +128,37 @@ public class GraphicsEditor {
 //            Matrix[] imageMatrix = Tools.getImageMatrix(imageShape.getImage());
 //            Matrix[] image3 = Tools.applyFilter(imageMatrix, Filter.highPassConvolutionFilter());
 //            Image resultImage =  Tools.matrixToImage(image3);
-            Image resultImage = ImageScanner.scan(imageShape.getImage(), new BlackWhiteImageFilter());
+            Image resultImage = ImageScanner.scan(imageShape.getImage(), new ErodeImageFilter());
             imageShape.setImage(resultImage);
         }
     }   
+    
+    public void applyErodeFilter() {
+        List<Shape> shapeList = getCurrentSheet().getFigures().getShapes();
+        ImageShape imageShape = null;
+        for(Shape sh:shapeList) {
+            if(sh instanceof ImageShape) {
+                imageShape = (ImageShape)sh;
+            }
+        }
+        if(imageShape != null) {
+            Image resultImage = ImageScanner.scan(imageShape.getImage(), new ErodeImageFilter());
+            imageShape.setImage(resultImage);
+        }
+    }
+    
+    public void applyDilateFilter() {
+        List<Shape> shapeList = getCurrentSheet().getFigures().getShapes();
+        ImageShape imageShape = null;
+        for(Shape sh:shapeList) {
+            if(sh instanceof ImageShape) {
+                imageShape = (ImageShape)sh;
+            }
+        }
+        if(imageShape != null) {
+            Image resultImage = ImageScanner.scan(imageShape.getImage(), new DilateImageFilter());
+            imageShape.setImage(resultImage);
+        }
+    }
    
 }
