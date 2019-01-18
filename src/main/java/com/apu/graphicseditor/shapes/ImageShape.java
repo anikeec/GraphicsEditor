@@ -7,6 +7,7 @@ package com.apu.graphicseditor.shapes;
 
 import com.apu.graphicseditor.OutputInterface;
 import com.apu.graphicseditor.editor.MouseKeyType;
+import java.awt.image.BufferedImage;
 import java.util.List;
 import javafx.scene.image.Image;
 import lombok.Getter;

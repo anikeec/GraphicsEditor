@@ -7,13 +7,20 @@ package com.apu.graphicseditor.editor;
 
 import com.apu.graphicseditor.JavaFxOutAdapter;
 import com.apu.graphicseditor.OutputInterface;
+import com.apu.graphicseditor.research.connectivity.ErodeImageFilter;
+import com.apu.graphicseditor.research.connectivity.ImageScanner;
+import com.apu.graphicseditor.research.convolution.Filter;
+import com.apu.graphicseditor.research.convolution.Matrix;
+import com.apu.graphicseditor.research.convolution.Tools;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.paint.Color;
 import com.apu.graphicseditor.shapes.ColorRGB;
+import com.apu.graphicseditor.shapes.ImageShape;
 import com.apu.graphicseditor.shapes.Point;
 import com.apu.graphicseditor.shapes.Shape;
 import com.apu.graphicseditor.shapes.Sheet;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -90,5 +97,38 @@ public class GraphicsEditor {
     public void moveSelectedFigures(Point point) {
         getCurrentSheet().moveSelectedFigures(point);            
     }
+    
+    public void runFirstResearch() {
+        List<Shape> shapeList = getCurrentSheet().getFigures().getShapes();
+        ImageShape imageShape = null;
+        for(Shape sh:shapeList) {
+            if(sh instanceof ImageShape) {
+                imageShape = (ImageShape)sh;
+            }
+        }
+        if(imageShape != null) {
+            Matrix[] imageMatrix = Tools.getImageMatrix(imageShape.getImage());
+            Matrix[] image3 = Tools.applyFilter(imageMatrix, Filter.highPassConvolutionFilter());
+            Image resultImage =  Tools.matrixToImage(image3);
+            imageShape.setImage(resultImage);
+        }
+    }
+    
+    public void runSecondResearch() {
+        List<Shape> shapeList = getCurrentSheet().getFigures().getShapes();
+        ImageShape imageShape = null;
+        for(Shape sh:shapeList) {
+            if(sh instanceof ImageShape) {
+                imageShape = (ImageShape)sh;
+            }
+        }
+        if(imageShape != null) {
+//            Matrix[] imageMatrix = Tools.getImageMatrix(imageShape.getImage());
+//            Matrix[] image3 = Tools.applyFilter(imageMatrix, Filter.highPassConvolutionFilter());
+//            Image resultImage =  Tools.matrixToImage(image3);
+            Image resultImage = ImageScanner.scan(imageShape.getImage(), new ErodeImageFilter());
+            imageShape.setImage(resultImage);
+        }
+    }   
    
 }

@@ -52,10 +52,10 @@ public class StateSelect extends StateBase{
                         stateEngine.graphicsEditor.getCurrentSheet().moveBackwardSelected();
                         break;
             case FIRST_RESEARCH:
-                        stateEngine.graphicsEditor.getCurrentSheet().runFirstResearch();
+                        stateEngine.graphicsEditor.runFirstResearch();
                         break;
             case SECOND_RESEARCH:
-                        stateEngine.graphicsEditor.getCurrentSheet().runSecondResearch();
+                        stateEngine.graphicsEditor.runSecondResearch();
                         break;
             default:
                         stateEngine.graphicsEditor.getCurrentSheet().unselectAllFigures();
