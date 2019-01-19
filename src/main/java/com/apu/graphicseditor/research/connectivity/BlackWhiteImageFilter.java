@@ -13,13 +13,13 @@ public class BlackWhiteImageFilter implements ImageFilter {
 
     @Override
     public Pixel handlePixel8(Pixel8 pixel) {
-        Pixel pix = pixel;
-        if(pix.getBwvalue() == Pixel.WHITE) {
-            pix.setColor(Pixel.COLOR_WHITE);
+        Pixel8 pix = pixel;
+        if(pix.getPixel().getBwvalue() == Pixel.WHITE) {
+            pix.getPixel().setColor(Pixel.COLOR_WHITE);
         } else {
-            pix.setColor(Pixel.COLOR_BLACK);
+            pix.getPixel().setColor(Pixel.COLOR_BLACK);
         }
-        return pix;
+        return pix.getPixel();
     }
     
 }

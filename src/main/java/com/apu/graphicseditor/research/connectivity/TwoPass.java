@@ -29,11 +29,12 @@ public class TwoPass {
     
     public Image update(Image image) {
         Map<Integer, List<Pixel>> linked = new HashMap<>();
-        int width = new Double(image.getWidth()).intValue();
-        int height = new Double(image.getHeight()).intValue();
-        int[][] labels = new int[width][height];
+        InnerImage innerImage = new InnerImage(image);
+        int height = innerImage.getHeight();
+        int width = innerImage.getWidth();
+        Pixel[][] labeledPixels = new Pixel[width][height];
         
-        PixelReader reader = image.getPixelReader();
+//        PixelReader reader = image.getPixelReader();
         WritableImage dest = new WritableImage(width, height);
         PixelWriter writer = dest.getPixelWriter();
         
@@ -43,25 +44,28 @@ public class TwoPass {
         //First pass
         for(int y=1; y<height-1; y++) {
             for(int x=1; x<width-1; x++) {
-                pixel = new Pixel(x, y, reader.getArgb(x, y));
+                pixel = innerImage.getPixels()[x][y];
                 if(pixel.getBwvalue() != Pixel.WHITE) {
-                    Pixel8 pixel8 = ImageScanner.getPixel8(reader, x, y);
+                    Pixel8 pixel8 = ImageScanner.getPixel8(innerImage, x, y);
                     if(is4NeighborsEmpty(pixel8)) { 
                         List list;
-                        if(linked.containsKey(nextLabel))
+                        if(linked.containsKey(nextLabel)) 
                             list = linked.get(nextLabel);
                         else {
                             list = new ArrayList<>();
                             linked.put(nextLabel, list);
                         }
+                        pixel.setLabel(nextLabel);
                         list.add(pixel);
-                        labels[x][y] = LABELS[nextLabel++];
+                        labeledPixels[x][y] = pixel;
+                        pixel.setLabel(LABELS[nextLabel++]);
                     } else {
-                        int minLabel = getSmallestNeighborLabel(pixel8, labels);
+                        int minLabel = getSmallestNeighborLabel(pixel8, labeledPixels);
                         if(minLabel == 0)
                             minLabel = LABELS[nextLabel++];
-                        labels[x][y] = minLabel;
-//                        unionWithNeibLabels()
+                        labeledPixels[x][y] = pixel;
+                        pixel.setLabel(minLabel);
+//                        unionWithNeibLabels(pixel8, minLabel, linked, labeledPixels);
                     }
                 }                
             }
@@ -69,23 +73,39 @@ public class TwoPass {
         
         for(int y=1; y<height-1; y++) {
             for(int x=1; x<width-1; x++) {
-                writer.setArgb(x, y, labels[x][y]);
+                writer.setArgb(x, y, labeledPixels[x][y].getLabel());
             }
         }
         
         return dest;        
     }
     
-//    public void unionWithNeibLabels(Pixel8 pixel8, int label, Map<Integer, List<Pixel>> linked, int[][] labels) {
-//        Pixel[] neighbors = pixel8.getNeighbor();
-//        if(!linked.containsKey(label))
-//            return;
-//        List list = linked.get(label);
-//        for(int i=0; i<neighbors.length-1; i++) {
-//            Pixel nb = neighbors[i];
+    public void unionWithNeibLabels(Pixel8 pixel8, 
+                                    int label, 
+                                    Map<Integer, List<Pixel>> linked, 
+                                    Pixel[][] labeledPixels) {
+        Pixel[] neighbors = pixel8.getNeighbor();
+        if(!linked.containsKey(label))
+            return;
+        List<Pixel> listForCurrentLabel = linked.get(label);
+        for(int i=0; i<neighbors.length-1; i++) {
+            //get neighbor
+            Pixel neighbor = neighbors[i];
+            
+            for(Pixel labeledPixel: listForCurrentLabel) {
+                if(labeledPixel == neighbor) {
+                    //remove from one labeled List and add to another
+                    if(linked.containsKey(label)) {
+                        List<Pixel> originalList = linked.get(label);
+                        originalList.remove(neighbor);
+                    }         
+                    neighbor.setLabel(label);
+                    listForCurrentLabel.add(neighbor);
+                }
+            }
 //            int label = labels[nb.getX()][nb.getY()]
-//        }
-//    }
+        }
+    }
     
     public boolean is4NeighborsEmpty(Pixel8 pixel8) {
         Pixel[] neighbors = pixel8.getNeighbor();
@@ -100,13 +120,13 @@ public class TwoPass {
         return true;
     }
     
-    public int getSmallestNeighborLabel(Pixel8 pixel8, int[][] labels) {
+    public int getSmallestNeighborLabel(Pixel8 pixel8, Pixel[][] labeledPixels) {
         Pixel[] neighbors = pixel8.getNeighbor();
         Pixel neighbor = neighbors[0];
-        int minLabel = labels[neighbor.getX()][neighbor.getY()];
+        int minLabel = labeledPixels[neighbor.getX()][neighbor.getY()].getLabel();
         for(int i=0; i<neighbors.length - 1; i++) {
             neighbor = neighbors[i];
-            int tempLabel = labels[neighbor.getX()][neighbor.getY()];
+            int tempLabel = labeledPixels[neighbor.getX()][neighbor.getY()].getLabel();
             if(tempLabel < minLabel)
                 minLabel = tempLabel;
         }

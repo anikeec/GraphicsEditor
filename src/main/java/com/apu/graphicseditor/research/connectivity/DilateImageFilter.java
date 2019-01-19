@@ -16,11 +16,11 @@ public class DilateImageFilter implements ImageFilter {
         Pixel[] neighbors = pixel.getNeighbor();
         for(int i=0; i<neighbors.length - 1; i++) {
             if(neighbors[i].getBwvalue() == Pixel.WHITE) {
-                pixel.setColor(Pixel.COLOR_WHITE);
-                return pixel;
+                pixel.getPixel().setColor(Pixel.COLOR_WHITE);
+                return pixel.getPixel();
             }
         }
-        return pixel;
+        return pixel.getPixel();
     }
     
 }

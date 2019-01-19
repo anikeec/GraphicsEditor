@@ -39,6 +39,8 @@ public class Pixel {
     
     @Getter
     private int y;
+    
+    @Getter @Setter
     private int label;
 
     public Pixel(int x, int y, int color) {

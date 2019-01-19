@@ -16,11 +16,11 @@ public class ErodeImageFilter implements ImageFilter {
         Pixel[] neighbors = pixel.getNeighbor();
         for(int i=0; i<neighbors.length - 1; i++) {
             if(neighbors[i].getBwvalue() == Pixel.BLACK) {
-                pixel.setColor(Pixel.COLOR_BLACK);
-                return pixel;
+                pixel.getPixel().setColor(Pixel.COLOR_BLACK);
+                return pixel.getPixel();
             }
         }
-        return pixel;
+        return pixel.getPixel();
     }
     
 }
